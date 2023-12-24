@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MiProyecto{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>MiProyecto</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'raiz' %}">Inicio</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'crear_serie' %}">Crear Serie</a></li>
+                    <li><a href="{% url 'ver_perfil' %}">Ver Perfil</a></li>
+                    <li><a href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                    <li><a href="{% url 'registrar_usuario' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

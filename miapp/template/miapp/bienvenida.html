@@ -1,0 +1,14 @@
+{% extends 'miapp/base.html' %}
+
+{% block content %}
+    <h2>Bienvenido a MiProyecto</h2>
+    {% for serie in series %}
+        <div>
+            <h3>{{ serie.titulo }}</h3>
+            <p>{{ serie.descripcion }}</p>
+            <p>Fecha de Estreno: {{ serie.fecha_estreno }}</p>
+            <p>Creador: {{ serie.creador.username }}</p>
+            <a href="{% url 'ver_serie' serie.pk %}">Ver Detalles</a>
+        </div>
+    {% endfor %}
+{% endblock %}
